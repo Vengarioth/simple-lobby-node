@@ -1,0 +1,32 @@
+{
+  "name": "simple-lobby-node",
+  "version": "0.1.0",
+  "description": "a simple lobby service for multiplayer game prototypes",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node --harmony src/index.js",
+    "test": "ava test",
+    "test-watch": "npm test -- --watch",
+    "test-ci": "ava test",
+    "setup": "node --harmony script/setup.js"
+  },
+  "keywords": [
+    "gamedev",
+    "games",
+    "lobby",
+    "prototyping"
+  ],
+  "author": "Andreas Fischer (http://twitter.com/vengarioth)",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.16.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "inquirer": "^1.2.1"
+  }
+}
