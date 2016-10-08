@@ -1,5 +1,8 @@
+const config = require('../config.json');
 const packageJson = require('../package.json');
 const version = packageJson.version;
+
+const Lobby = require('./lobby/lobby');
 
 const express = require('express');
 const bodyParser = require('body-parser');
