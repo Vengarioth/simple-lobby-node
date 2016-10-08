@@ -1,4 +1,7 @@
 # simple-lobby-node
+
+[![Build Status](https://travis-ci.org/Vengarioth/simple-lobby-node.svg?branch=master)](https://travis-ci.org/Vengarioth/simple-lobby-node)
+
 The nodejs backend implementation of the _simple-lobby-service_. There is also an sdk  for unity3d (soon).
 
 # Motivation
