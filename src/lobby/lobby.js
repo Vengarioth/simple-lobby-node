@@ -1,8 +1,9 @@
 class Lobby {
 
-    constructor(id, name) {
+    constructor(id, name, changeCode) {
         this._id = id;
         this._name = name;
+        this._changeCode = changeCode;
     }
 
     get id() {
@@ -11,6 +12,10 @@ class Lobby {
 
     get name() {
         return this._name;
+    }
+
+    get changeCode() {
+        return this._changeCode;
     }
 
 }
