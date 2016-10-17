@@ -1,5 +1,5 @@
 const test = require('ava');
-const Password = require('../../src/lobby/password');
+const Password = require('../../../src/lobby/password');
 
 const code = "someReallyDumbPassword";
 const salt = "$0m3_V4lu3";

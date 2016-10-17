@@ -5,8 +5,8 @@ class MemoryLobbyRepository {
     }
 
     getLobbies(callback) {
-        // TODO
-        callback(new Error('not implemented'));
+        const lobbies = Array.from(this._lobbies.entries()).map(entry => entry[1]);
+        callback(null, lobbies);
     }
 
     findLobbyById(id, callback) {
@@ -15,7 +15,8 @@ class MemoryLobbyRepository {
             return;
         }
 
-        callback(null, this._lobbies.get(id));
+        // assure async execution
+        setTimeout(() => callback(null, this._lobbies.get(id)), 1);
     }
 
     findLobbyByName(name, callback) {
@@ -35,7 +36,8 @@ class MemoryLobbyRepository {
 
         this._lobbies.set(lobby.id, lobby);
 
-        callback(null, true);
+        // assure async execution
+        setTimeout(() => callback(null, true), 1);
     }
 
     updateLobby(lobby, callback) {
@@ -46,18 +48,20 @@ class MemoryLobbyRepository {
 
         this._lobbies.set(lobby.id, lobby);
 
-        callback(null, true);
+        // assure async execution
+        setTimeout(() => callback(null, true), 1);
     }
 
-    removeLobby(lobby, callback) {
-        if (!this._lobbies.has(lobby.id)) {
-            callback(new Error(`No lobby with id "${lobby.id}" found.`));
+    removeLobby(id, callback) {
+        if (!this._lobbies.has(id)) {
+            callback(new Error(`No lobby with id "${id}" found.`));
             return;
         }
 
-        this._lobbies.delete(lobby.id);
+        this._lobbies.delete(id);
 
-        callback(null, true);
+        // assure async execution
+        setTimeout(() => callback(null, true), 1);
     }
 
 }

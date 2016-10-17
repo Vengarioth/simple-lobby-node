@@ -1,5 +1,5 @@
 const test = require('ava');
-const MemoryLobbyRepository = require('../../src/repository/memory-lobby-repository');
+const MemoryLobbyRepository = require('../../../src/repository/memory-lobby-repository');
 
 test.cb('MemoryLobbyRepository stores a lobby', (t) => {
     const mockedLobby = { id: 'someId', foo: 'bar' };
@@ -50,7 +50,7 @@ test.cb('MemoryLobbyRepository removes a stored lobby', (t) => {
 
     t.plan(1);
     memoryLobbyRepository.addLobby(mockedLobby, (error, ok) => {
-        memoryLobbyRepository.removeLobby(mockedLobby, (error, ok) => {
+        memoryLobbyRepository.removeLobby('someId', (error, ok) => {
             memoryLobbyRepository.findLobbyById('someId', (error, foundLobby) => {
                 t.truthy(error);
                 t.end();

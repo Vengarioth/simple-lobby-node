@@ -2,7 +2,11 @@ const config = require('../config.json');
 const packageJson = require('../package.json');
 const version = packageJson.version;
 
-const Lobby = require('./lobby/lobby');
+const uniqid = require('uniqid');
+
+const contracts = require('./contract');
+const LobbyRepository = require('./repository/memory-lobby-repository');
+const LobbyController = require('./controller/lobby-controller');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -17,9 +21,15 @@ app.use(bodyParser.json({
 const createAppHealthRoute = require('./route/app-health');
 const createLobbyRoute = require('./route/lobby');
 
+// setup persistence
+const lobbyRepository = new LobbyRepository();
+
+// setup controller
+const lobbyController = new LobbyController(lobbyRepository, contracts, () => uniqid('l-'), () => uniqid());
+
 // setup routes
 createAppHealthRoute(router, version);
-createLobbyRoute(router);
+createLobbyRoute(router, lobbyController);
 
 app.use('/api', router);
 
